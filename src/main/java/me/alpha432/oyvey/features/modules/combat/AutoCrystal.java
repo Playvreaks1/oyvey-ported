@@ -5,7 +5,7 @@ import dev.zprestige.prestige.client.event.impl.MoveEvent;
 import dev.zprestige.prestige.client.module.Category;
 import dev.zprestige.prestige.client.module.Module;
 import dev.zprestige.prestige.client.setting.impl.BooleanSetting;
-import dev.zprestige.prestige.client.setting.impl.DragSetting;
+import Dev.zprestige.Prestige.Client.
 import dev.zprestige.prestige.client.util.impl.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
@@ -17,19 +17,19 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.hitresult;
 import net.minecraft.util.math.BlockPos;
 
 public class AutoCrystal extends Module {
 
-    public DragSetting delay;
+    public Pulling delay;
     public BooleanSetting silentSwap;
     public BooleanSetting headBob;
     public BooleanSetting inAir;
     public BooleanSetting switchSetting;
     public BooleanSetting damageTick;
     public BooleanSetting pauseOnKill;
-    public TimerUtil timer;
+    public Timerutil timer;
     public BlockPos pos;
 
     public AutoCrystal() {
@@ -41,7 +41,7 @@ public class AutoCrystal extends Module {
         switchSetting = setting("Switch", false).description("Switches to crystals when the module is enabled.");
         damageTick = setting("Damage Tick", false).description("Only break crystals when they do damage");
         pauseOnKill = setting("Pause On Kill", false).description("Pauses when there is a dead body");
-        timer = new TimerUtil();
+        timer = new Timerutil();
     }
 
     @Override
