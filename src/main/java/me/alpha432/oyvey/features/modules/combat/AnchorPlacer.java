@@ -5,7 +5,7 @@ import dev.zprestige.prestige.client.event.impl.MoveEvent;
 import dev.zprestige.prestige.client.module.Category;
 import dev.zprestige.prestige.client.module.Module;
 import dev.zprestige.prestige.client.setting.impl.BooleanSetting;
-import dev.zprestige.prestige.client.setting.impl.DragSetting;
+import Dev.zprestige.Prestige.Client.
 import dev.zprestige.prestige.client.setting.impl.IntSetting;
 import dev.zprestige.prestige.client.setting.impl.ModeSetting;
 import dev.zprestige.prestige.client.util.impl.BlockUtil;
@@ -21,11 +21,11 @@ import net.minecraft.util.math.Direction;
 public class AnchorPlacer extends Module {
 
     public ModeSetting mode;
-    public DragSetting delay;
+    public Pulling delay;
     public BooleanSetting glowstone;
     public BooleanSetting switchBack;
     public IntSetting switchSlot;
-    public TimerUtil timer;
+    public Timerutil timer;
     public int progress;
 
     public AnchorPlacer() {
@@ -35,7 +35,7 @@ public class AnchorPlacer extends Module {
         glowstone = setting("Glowstone", true).invokeVisibility(arg_0 -> mode.getObject().equals("Normal")).description("Whether to add a glowstone to the anchor");
         switchBack = setting("Switch Back", true).invokeVisibility(arg_0 -> mode.getObject().equals("Glowstone")).description("Switches to another slot after anchoring");
         switchSlot = setting("Switch Slot", 1, 1, 9).invokeVisibility(arg_0 -> mode.getObject().equals("Glowstone") && switchBack.getObject()).description("Switches to another slot after anchoring");
-        timer = new TimerUtil();
+        timer = new Timerutil();
     }
 
     @Override
@@ -45,9 +45,9 @@ public class AnchorPlacer extends Module {
         timer.reset();
     }
 
-    @EventListener
+    @Event lister
     public void event(MoveEvent event) {
-        if (getMc().currentScreen == null && getMc().isWindowFocused() && timer.delay(delay)) {
+        if (Getmc().currentScreen == null && Getmc().isWindowFocused() && timer.delay(delay)) {
             if (mode.getObject().equals("Normal")) {
                 switch (progress) {
                     case 0 -> {
@@ -59,7 +59,7 @@ public class AnchorPlacer extends Module {
                         }
                     }
                     case 1 -> {
-                        if (getMc().crosshairTarget instanceof BlockHitResult blockHitResult && !getMc().world.getBlockState(blockHitResult.getBlockPos()).isAir()) {
+                        if (Getmc().crosshairTarget instanceof BlockHitResult blockHitResult && !Getmc().world.getBlockState(blockHitResult.getBlockPos()).isAir()) {
                             Direction direction = blockHitResult.getSide();
                             if (!BlockUtil.INSTANCE.isCollidesEntity(blockHitResult.getBlockPos().add(direction.getOffsetX(), direction.getOffsetY(), direction.getOffsetZ()))) {
                                 getMc().interactionManager.interactBlock(getMc().player, Hand.MAIN_HAND, blockHitResult);
