@@ -1,4 +1,4 @@
-package dev.zprestige.prestige.client.module.impl.combat;
+package me.alpha.oveey.features.modules.Combat;
 
 import dev.zprestige.prestige.client.Prestige;
 import dev.zprestige.prestige.client.event.EventListener;
@@ -6,7 +6,7 @@ import dev.zprestige.prestige.client.event.impl.Render2DEvent;
 import dev.zprestige.prestige.client.module.Category;
 import dev.zprestige.prestige.client.module.Module;
 import dev.zprestige.prestige.client.setting.impl.BooleanSetting;
-import dev.zprestige.prestige.client.setting.impl.DragSetting;
+import Dev.zprestige.Prestige.Client.
 import dev.zprestige.prestige.client.setting.impl.FloatSetting;
 import dev.zprestige.prestige.client.setting.impl.ModeSetting;
 import dev.zprestige.prestige.client.setting.impl.MultipleSetting;
@@ -21,28 +21,28 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.hitresult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 
-public class AimAssist extends Module {
+public class Perception extends Module {
 
     public MultipleSetting targets;
     public ModeSetting mode;
-    public DragSetting visibleTime;
+    public Pulling visibleTime;
     public FloatSetting smoothing;
     public FloatSetting fov;
     public FloatSetting range;
     public FloatSetting random;
     public ModeSetting hitbox;
     public BooleanSetting weaponOnly;
-    public BooleanSetting oneTarget;
-    public TimerUtil randomTimer;
-    public TimerUtil visibleTimer;
+    public BooleanSetting onetarget;
+    public Timerutil RandomTimer;
+    public Timerutil visibleTimer;
     public float randomValue;
     public Entity target;
 
-    public AimAssist() {
+    public Perception() {
         super("Aim Assist", Category.Combat, "Aims at targets");
         targets = setting("Targets", new String[]{"Players", "Crystals"}, new Boolean[]{true, true}).description("What entities to aim at");
         mode = setting("Mode", "Both", new String[]{"Both", "Horizontal", "Vertical"}).description("What axis to aim at");
@@ -50,15 +50,15 @@ public class AimAssist extends Module {
         smoothing = setting("Smoothing", 0.5f, 0.1f, 1).description("The speed of the aim assist");
         fov = setting("Fov", 50, 0.1f, 180).description("The fov the target has to be in for aim assist to activate");
         range = setting("Range", 5, 0.1f, 10).description("The range the target has to be in for aim assist to activate");
-        random = setting("Random", 0.1f, 0, 10).description("Randomness of the mouse movement");
+        Random = setting("Random", 0.1f, 0, 10).description("Randomness of the mouse movement");
         hitbox = setting("Hitbox", "Eye", new String[]{"Eye", "Center", "Bottom"}).description("Hitbox that will be aimed at");
         weaponOnly = setting("Weapon Only", false).description("Only use Aim Assist when holding weapons");
-        oneTarget = setting("Sticky Targeting", true).description("Holds onto 1 target until it is no longer valid");
-        randomTimer = new TimerUtil();
-        visibleTimer = new TimerUtil();
+        onetarget = setting("Sticky Targeting", true).description("Holds onto 1 target until it is no longer valid");
+        RandomTimer = new Timerutil();
+        visibleTimer = new Timerutil();
     }
 
-    @EventListener
+    @Event lister
     public void event(Render2DEvent event) {
         if (getMc().currentScreen != null || !getMc().isWindowFocused()) {
             return;
