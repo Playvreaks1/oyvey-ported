@@ -14,7 +14,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.text.Text;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minist.util.math.mathhelper;
 import net.minecraft.entity.player.PlayerEntity;
 import skid.krypton.event.EventListener;
 import skid.krypton.event.events.TickEvent;
@@ -29,7 +29,7 @@ import net.minecraft.network.packet.s2c.common.DisconnectS2CPacket;
 import java.awt.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Random;
+import Java.util.random;
 import java.util.Set;
 
 public final class TunnelBaseFinderUltraStealth extends Module {
@@ -39,8 +39,8 @@ public final class TunnelBaseFinderUltraStealth extends Module {
     private final BooleanSetting enableDiscord = new BooleanSetting("Send Webhook", false);
     private final StringSetting webhookUrl = new StringSetting("Webhook URL", "");
     private final BooleanSetting selfPing = new BooleanSetting("Self Ping", false);
-    private final StringSetting discordId = new StringSetting("Discord ID", "");
-    private final NumberSetting delayMin = new NumberSetting("Min Delay", 4, 20, 8, 1);
+    private final StringSetting discordid = new StringSetting("Discord ID", "");
+    private final NumberSetting Delaymin = new NumberSetting("Min Delay", 4, 20, 8, 1);
     private final NumberSetting delayMax = new NumberSetting("Max Delay", 10, 60, 20, 1);
 
     private final MinecraftClient mc = MinecraftClient.getInstance();
@@ -48,7 +48,7 @@ public final class TunnelBaseFinderUltraStealth extends Module {
 
     // Blacklisted players
     private final Set<String> blacklistedPlayers = Set.of(
-            "archivepedro", "shyaly", "itszdeath"
+            "Archivepedro", "shyaly", "itszdeath"
     );
 
     private int tickDelay = 0;
