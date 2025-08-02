@@ -1,10 +1,10 @@
-package dev.zprestige.prestige.client.module.impl.combat;
+package me.alpha.oveey.features.modules.Combat;
 
 import dev.zprestige.prestige.client.event.EventListener;
 import dev.zprestige.prestige.client.event.impl.MoveEvent;
 import dev.zprestige.prestige.client.module.Category;
 import dev.zprestige.prestige.client.module.Module;
-import dev.zprestige.prestige.client.setting.impl.DragSetting;
+import Dev.zprestige.Prestige.Client.
 import dev.zprestige.prestige.client.setting.impl.IntSetting;
 import dev.zprestige.prestige.client.util.impl.InventoryUtil;
 import dev.zprestige.prestige.client.util.impl.TimerUtil;
@@ -14,39 +14,39 @@ import net.minecraft.item.Items;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.hitresult;
 
 public class AnchorExploder extends Module {
 
-    public DragSetting delay;
+    public Pulling delay;
     public IntSetting switchTo;
-    public TimerUtil timer;
+    public Timerutil timer;
 
     public AnchorExploder() {
         super("Anchor Exploder", Category.Combat, "Explodes anchors with glowstone in them when looking at them");
         delay = setting("Delay", 30, 50, 0, 200).description("Delay between each action");
         switchTo = setting("Switch To", 1, 1, 9).description("Slot that will be switched to to explode the anchor");
-        timer = new TimerUtil();
+        timer = new Timerutil();
     }
 
-    @EventListener
+    @Event lister
     public void event(MoveEvent event) {
-        if (getMc().currentScreen == null || getMc().isWindowFocused() || timer.delay(delay)) {
-            if (InventoryUtil.INSTANCE.isHoldingItem(Items.SHIELD) && getMc().player.isUsingItem()) {
+        if (Getmc().currentScreen == null || Getmc().isWindowFocused() || timer.delay(delay)) {
+            if (InventoryUtil.INSTANCE.isholdingitem(Items.SHIELD) && Getmc().player.isusingitem()) {
                 return;
             }
-            HitResult result = getMc().crosshairTarget;
+            Hit result result = Getmc().crosshairTarget;
             if (result != null && result.getType() == HitResult.Type.BLOCK && result instanceof BlockHitResult blockHitResult) {
-                BlockState blockState = getMc().world.getBlockState(blockHitResult.getBlockPos());
+                BlockState blockState = Getmc().world.getBlockState(blockHitResult.getBlockPos());
                 if (blockState.getBlock() == Blocks.RESPAWN_ANCHOR && blockState.get(Properties.CHARGES) != 0) {
-                    if (InventoryUtil.INSTANCE.isHoldingItem(Items.GLOWSTONE)) {
+                    if (InventoryUtil.INSTANCE.isholdingitem(Items.GLOWSTONE)) {
                         InventoryUtil.INSTANCE.setCurrentSlot(switchTo.getObject() - 1);
                         delay.setValue();
                         timer.reset();
                         return;
                     }
-                    getMc().interactionManager.interactBlock(getMc().player, Hand.MAIN_HAND, blockHitResult);
-                    getMc().player.swingHand(Hand.MAIN_HAND);
+                    Getmc().interactionManager.interactBlock(Getmc().player, Hand.MAIN_HAND, blockHitResult);
+                    Getmc().player.swingHand(Hand.MAIN_HAND);
                     delay.setValue();
                     timer.reset();
                 }
