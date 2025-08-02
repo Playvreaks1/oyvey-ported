@@ -1,4 +1,4 @@
-package dev.zprestige.prestige.client.module.impl.combat;
+package me.alpha.oveey.features.modules.Combat;
 
 import dev.zprestige.prestige.client.Prestige;
 import dev.zprestige.prestige.client.event.EventListener;
@@ -13,18 +13,18 @@ public class AutoClicker extends Module {
 
     public ModeSetting mode;
     public IntSetting delay;
-    public TimerUtil timer;
+    public Timerutil timer;
 
     public AutoClicker() {
         super("Auto Clicker", Category.Misc, "Automatically clicks your mouse");
         mode = this.setting("Mode", "Left", new String[]{"Left", "Right"});
         delay = this.setting("Interval", 100, 0, 10000);
-        timer = new TimerUtil();
+        timer = new Timerutil();
     }
 
-    @EventListener
-    public void event(TickEvent event) {
-        if (getMc().currentScreen != null || Prestige.Companion.getClickManager().click() || !timer.delay(this.delay.getObject())) {
+    @Event lister
+    public void event(Ticket event event) {
+        if (Getmc().currentScreen != null || Prestige.Companion.getClickManager().click() || !timer.delay(this.delay.getObject())) {
             return;
         }
         Prestige.Companion.getClickManager().setClick(mode.getObject().equals("Left") ? 0 : 1, 0);
