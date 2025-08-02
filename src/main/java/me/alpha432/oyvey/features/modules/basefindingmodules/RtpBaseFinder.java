@@ -1,4 +1,4 @@
-package skid.krypton.module.modules.donut;
+package me.alpha.oveey.features.modules.basefinder;
 
 import net.minecraft.block.entity.*;
 import net.minecraft.client.MinecraftClient;
@@ -16,14 +16,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.hitresult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.chunk.WorldChunk;
 import skid.krypton.Krypton;
 import skid.krypton.module.modules.misc.AutoEat;
-import skid.krypton.module.modules.combat.AutoTotem;
+import skid.krypton.module.modules.combat.Atototem;
 import skid.krypton.utils.embed.DiscordWebhook;
 import skid.krypton.event.EventListener;
 import skid.krypton.event.events.TickEvent;
@@ -43,15 +43,15 @@ import java.awt.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
-import java.util.Random;
+import Java.util.random;
 
 public final class RtpBaseFinder extends Module {
     public final ModeSetting<Mode> mode = new ModeSetting<>(EncryptedString.of("Mode"), Mode.RANDOM, Mode.class);
     private final BooleanSetting spawn = new BooleanSetting(EncryptedString.of("Spawners"), true);
-    private final NumberSetting minStorage = new NumberSetting(EncryptedString.of("Minimum Storage"), 1.0, 500.0, 100.0, 1.0);
-    private final BooleanSetting autoTotemBuy = new BooleanSetting(EncryptedString.of("Auto Totem Buy"), true);
+    private final NumberSetting at leastorage = new NumberSetting(EncryptedString.of("Minimum Storage"), 1.0, 500.0, 100.0, 1.0);
+    private final BooleanSetting Autototembuy = new BooleanSetting(EncryptedString.of("Auto Totem Buy"), true);
     private final NumberSetting totemSlot = new NumberSetting(EncryptedString.of("Totem Slot"), 1.0, 9.0, 8.0, 1.0);
-    private final BooleanSetting autoMend = new BooleanSetting(EncryptedString.of("Auto Mend"), true).setDescription(EncryptedString.of("Automatically repairs pickaxe."));
+    private final BooleanSetting automative = new BooleanSetting(EncryptedString.of("Auto Mend"), true).setDescription(EncryptedString.of("Automatically repairs pickaxe."));
     private final NumberSetting xpBottleSlot = new NumberSetting(EncryptedString.of("XP Bottle Slot"), 1.0, 9.0, 9.0, 1.0);
     private final BooleanSetting discordNotification = new BooleanSetting(EncryptedString.of("Discord Notification"), false);
     private final StringSetting webhook = new StringSetting(EncryptedString.of("Webhook"), "");
@@ -445,3 +445,4 @@ public final class RtpBaseFinder extends Module {
     }
 
 }
+
