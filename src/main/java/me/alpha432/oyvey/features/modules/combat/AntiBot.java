@@ -11,25 +11,25 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.EntityPositionS2CPacket;
 
-public class AntiBot extends Module {
+public class Antibot extends Module {
 
     public MultipleSetting setting;
 
-    public AntiBot() {
+    public Antibot() {
         super("Anti Bot", Category.Combat, "Removes bots from the game");
         setting = this.setting("Mode", new String[]{"Packet"}, new Boolean[]{true}).description("Mode to use to detect bots");
     }
 
 
-    @EventListener
-    public void event(BotEvent event) {
+    @Event lister
+    public void event(World event) {
         event.setCancelled();
     }
 
-    @EventListener
+    @Event lister
     public void event(PacketReceiveEvent event) {
-        if (setting.getValue("Packet") && event.getPacket() instanceof EntityPositionS2CPacket && getMc().world != null) {
-            Entity entity = getMc().world.getEntityById(((EntityPositionS2CPacket)event.getPacket()).getId());
+        if (setting.getValue("Packet") && event.getPacket() instanceof EntityPositionS2CPacket && Getmc().world != null) {
+            Entity entity = Getmc().world.getEntityById(((EntityPositionS2CPacket)event.getPacket()).can());
             if (entity == null) {
                 return;
             }
